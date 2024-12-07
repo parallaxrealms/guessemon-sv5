@@ -1,38 +1,50 @@
-# sv
+# Guessemon
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+## Wordle Meets Pokémon  
+**Created by Parallax**
 
-## Creating a project
+### About  
+Guessemon is a fan-made game where Wordle meets Pokémon! It challenges players to guess the name of a randomly selected Pokémon. The game is built using **SvelteKit / Svelte 5** and integrates data from the [PokéAPI](https://pokeapi.co/). On page load, a random Pokémon is fetched, and its name is set as the answer to the word puzzle. To assist players, the game provides hints in the form of the Pokémon's element type(s).
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Pokémon Name Filtering  
+To keep the game fair, consistent, and interesting Pokémon names are filtered based on the following criteria:  
+- **Name length**: Only Pokémon with names between 5 and 10 characters are included.  
+- **No special characters**: Pokémon names containing dashes, spaces, or other non-alphabetical characters (e.g., `Ho-oh`, `Porygon-Z`) are excluded.  
 
-```bash
-# create a new project in the current directory
-npx sv create
+### Leagues (Game Modes)
+Guessemon offers three leagues to play based on your knowledge of the Pokemon Generations.
+#### **1. Retro League**
+- Pokémon are selected exclusively from **Generations 1 and 2**.
+- Perfect for players who love the classic era of Pokémon.
+- Fewer Pokémon to choose from, making it easier for nostalgic fans to guess.
 
-# create a new project in my-app
-npx sv create my-app
-```
+#### **2. Common League**
+- Pokémon are chosen from **Generations 1 through 6**.
+- A balanced challenge for players familiar with Pokémon up to the mid-series games.
+- A wider variety of names to guess, with more diversity in gameplay.
 
-## Developing
+#### **3. Master League**
+- Pokémon can come from **any generation**, spanning the entire Pokémon universe.
+- The ultimate challenge for hardcore Pokémon fans who know their stuff.
+- Test your knowledge with the largest pool of possible answers.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Features  
+- Built with **Svelte 5**
+- TypeScript
+- UI component libraries used:
+  - **[Skeleton.dev](https://skeleton.dev/)**
+  - **[shadcn-svelte](https://shadcn.dev/)**
+  - **[svelte-animations](https://github.com/SikandarJODD/svelte-animations)**
 
-```bash
-npm run dev
+### Project Migration to Svelte 5
+This project is a complete migration of the **[original Guessemon game](https://github.com/parallaxrealms/guessemon)** which was written in **Svelte 4**, to **Svelte 5**. This rewrite also introduced TypeScript compatibility.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+### Disclaimer  
+Guessemon is a fan-made project created purely for entertainment purposes. It is not affiliated with, endorsed by, or officially associated with Nintendo, Game Freak, The Pokémon Company, or any related entities. All Pokémon names, designs, and trademarks belong to their respective owners.  
 
-## Building
+### Contributions
+This project is 100% non-commercial. However, contributions in the form of feedback or code improvements are always welcome.
 
-To create a production version of your app:
+---
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Thank you for playing and testing! 🎮✨
