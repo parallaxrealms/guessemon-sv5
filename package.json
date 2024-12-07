@@ -1,0 +1,58 @@
+{
+	"name": "guessemon-sv5",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "A Wordle-style guessing game with Pokémon.",
+	"author": "Christian (parallax) Cassara <sbrd122@gmail.com>",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/parallaxrealms/guessemon-sv5.git"
+	},
+	"bugs": {
+		"url": "https://github.com/parallaxrealms/guessemon-sv5/issues"
+	},
+	"homepage": "https://guessemon.com",
+	"keywords": [
+		"svelte",
+		"svelte5",
+		"sveltekit",
+		"pokemon",
+		"wordle",
+		"game"
+	],
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+	},
+	"devDependencies": {
+		"@skeletonlabs/skeleton": "3.0.0-next.9",
+		"@skeletonlabs/skeleton-svelte": "1.0.0-next.15",
+		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/kit": "^2.9.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"@types/node": "^22.10.1",
+		"autoprefixer": "^10.4.20",
+		"bits-ui": "1.0.0-next.67",
+		"clsx": "^2.1.1",
+		"lucide-svelte": "^0.468.0",
+		"postcss": "^8.4.49",
+		"svelte": "^5.0.0",
+		"svelte-check": "^4.0.0",
+		"svelte-preprocess": "^6.0.3",
+		"tailwind-merge": "^2.5.5",
+		"tailwind-variants": "^0.3.0",
+		"tailwindcss": "^3.4.16",
+		"tailwindcss-animate": "^1.0.7",
+		"typescript": "^5.0.0",
+		"vite": "^6.0.0"
+	},
+	"dependencies": {
+		"@tailwindcss/forms": "^0.5.9",
+		"@tailwindcss/typography": "^0.5.15",
+		"mode-watcher": "^0.5.0"
+	}
+}
