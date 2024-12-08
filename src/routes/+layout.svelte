@@ -51,7 +51,7 @@
 				</span>
 			</div>
 
-			<div class="flex-shrink my-1">
+			<div class="flex-shrink my-auto md:my-1">
 				<LightSwitch />
 			</div>
 		</div>

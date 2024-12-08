@@ -200,7 +200,7 @@
 					>
 						{#each answer.split('') as _, index}
 							<div
-								class="w-10 h-10 border-2 border-stone-900 dark:border-stone-100 flex items-center justify-center rounded-md text-lg font-semibold
+								class="w-10 h-10 border-2 border-surface-900 dark:border-surface-100 flex items-center justify-center rounded-md text-lg font-semibold
 										{feedback[attemptIndex][index] === 'green'
 									? 'bg-green-400'
 									: feedback[attemptIndex][index] === 'yellow'
@@ -223,7 +223,6 @@
 							value={userGuesses[attempts]}
 							onValueChange={(v: string) => handleOTPInput(v)}
 							maxlength={answer.length}
-							pattern={REGEXP_ONLY_CHARS}
 							spellcheck="false"
 						>
 							{#snippet children({ cells })}
@@ -231,7 +230,7 @@
 									{#each cells as cell}
 										<InputOTP.Slot
 											{cell}
-											class="w-12 h-12 border border-gray-300 rounded-md text-center text-xl"
+											class="w-10 h-10 md:w-12 md:h-12 border border-surface-200 rounded-md text-center text-xl"
 										/>
 									{/each}
 								</InputOTP.Group>
@@ -273,7 +272,7 @@
 						id="showHint"
 						type="checkbox"
 						bind:checked={showHintCheckbox}
-						class="mr-2"
+						class="checkbox mr-2 p-2"
 					/>
 					<label for="showHint">Show Hint after 2 Fails</label>
 				</div>
@@ -310,7 +309,7 @@
 </div>
 
 <div
-	class="league-card md:absolute md:left-0 md:top-40 border-2 border-purple-500 w-full md:w-64 h-72 mt-8 ml-6 rounded-sm"
+	class="league-card md:absolute md:left-0 md:top-40 border-2 border-purple-500 mx-auto w-4/5 md:w-64 h-72 mt-8 md:ml-6 rounded-sm"
 >
 	<div class="text-center mx-1">
 		<p class="text-xl font-semibold">Choose your League:</p>
@@ -383,7 +382,7 @@
 </div>
 
 <div
-	class="rules-card md:absolute md:right-0 md:top-40 border-2 border-purple-500 w-full md:w-64 h-64 mt-8 mr-6 rounded-sm"
+	class="rules-card md:absolute md:right-0 md:top-40 border-2 border-purple-500 mx-auto w-4/5 md:w-64 h-64 mt-8 mb-2 md:mr-6 rounded-sm"
 >
 	<div class="text-center">
 		<p class="text-xl font-semibold text-purple-500">Current Rules:</p>
