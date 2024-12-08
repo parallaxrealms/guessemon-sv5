@@ -264,6 +264,11 @@
 							{#each Array(answer.length) as _, i}
 								<input
 									type="text"
+									inputmode="text"
+									pattern="[A-Za-z]*"
+									autocorrect="off"
+									autocapitalize="none"
+									spellcheck="false"
 									class="w-10 h-10 md:w-12 md:h-12 bg-surface-100 dark:bg-surface-600 border border-surface-200 rounded-md text-center text-xl"
 									maxlength="1"
 									oninput={(e) =>
