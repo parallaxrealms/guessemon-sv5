@@ -1,0 +1,7 @@
+[phases]
+install = "pnpm install"
+build = "pnpm build"
+start = "pnpm preview"
+
+[variables]
+NODE_ENV = "production"

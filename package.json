@@ -6,6 +6,9 @@
 	"author": "Christian (parallax) Cassara <sbrd122@gmail.com>",
 	"license": "MIT",
 	"packageManager": "pnpm@9.13.2",
+	"engines": {
+		"node": "18.x"
+	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/parallaxrealms/guessemon-sv5.git"
