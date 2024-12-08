@@ -1,9 +1,5 @@
 <script lang="ts">
-	import * as InputOTP from '$lib/components/ui/input-otp/index.js';
-	import { REGEXP_ONLY_CHARS } from 'bits-ui';
 	import ShinyCard from '$lib/components/ShinyCard.svelte';
-
-	let { data } = $props();
 
 	let isDataLoaded = $state(false);
 	let answer = $state<string | undefined>(undefined);
@@ -21,6 +17,8 @@
 	let filteredNames = $state<{ name: string; generation: number }[]>([]);
 
 	const maxAttempts = 3;
+	const allowedChars = /^[A-Za-z]$/;
+	let inputRefs = $state<HTMLInputElement[]>([]);
 
 	// Fetch all Pokémon data
 	async function fetchMon(): Promise<void> {
@@ -154,8 +152,52 @@
 		hasWon = false;
 	}
 
-	function handleOTPInput(guess: string) {
-		userGuesses[attempts] = guess.toUpperCase();
+	// Handle single character input
+	function handleCharInput(value: string, index: number) {
+		const char = value.trim();
+		if (!allowedChars.test(char)) {
+			// If input is invalid, revert to previous char
+			const prevChar = userGuesses[attempts][index] || '';
+			// Reset input field to previous valid char
+			if (inputRefs[index]) {
+				inputRefs[index].value = prevChar;
+			}
+			return;
+		}
+		// If valid character, update the guess string
+		const currentGuess = userGuesses[attempts];
+		userGuesses[attempts] =
+			currentGuess.slice(0, index) +
+			char.toUpperCase() +
+			currentGuess.slice(index + 1);
+
+		// Move focus to next cell if possible
+		if (index < (answer?.length ?? 0) - 1) {
+			inputRefs[index + 1]?.focus();
+		}
+	}
+
+	function handleKeyDown(e: KeyboardEvent, index: number) {
+		if (e.key === 'Backspace') {
+			if (!userGuesses[attempts][index]) {
+				// current cell is empty move focus to previous cell
+				if (index > 0) {
+					inputRefs[index - 1]?.focus();
+				}
+			} else {
+				// if not empty remove current char
+				const currentGuess = userGuesses[attempts];
+				userGuesses[attempts] =
+					currentGuess.slice(0, index) + '' + currentGuess.slice(index + 1);
+			}
+		}
+	}
+
+	function storeRef(node: HTMLElement, index: number) {
+		const input = node as HTMLInputElement;
+		inputRefs[index] = input;
+
+		return {};
 	}
 
 	$effect(() => {
@@ -218,24 +260,20 @@
 			{#if attempts < maxAttempts && !hasWon}
 				{#key answer}
 					<div class="mt-6">
-						<InputOTP.Root
-							controlledValue
-							value={userGuesses[attempts]}
-							onValueChange={(v: string) => handleOTPInput(v)}
-							maxlength={answer.length}
-							spellcheck="false"
-						>
-							{#snippet children({ cells })}
-								<InputOTP.Group>
-									{#each cells as cell}
-										<InputOTP.Slot
-											{cell}
-											class="w-10 h-10 md:w-12 md:h-12 border border-surface-200 rounded-md text-center text-xl"
-										/>
-									{/each}
-								</InputOTP.Group>
-							{/snippet}
-						</InputOTP.Root>
+						<div class="flex justify-center">
+							{#each Array(answer.length) as _, i}
+								<input
+									type="text"
+									class="w-10 h-10 md:w-12 md:h-12 bg-surface-100 dark:bg-surface-600 border border-surface-200 rounded-md text-center text-xl"
+									maxlength="1"
+									oninput={(e) =>
+										handleCharInput((e.target as HTMLInputElement).value, i)}
+									onkeydown={(e) => handleKeyDown(e, i)}
+									use:storeRef={i}
+									value={userGuesses[attempts][i] ?? ''}
+								/>
+							{/each}
+						</div>
 					</div>
 				{/key}
 			{/if}
