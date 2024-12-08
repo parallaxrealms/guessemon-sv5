@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"packageManager": "pnpm@9.13.2",
 	"engines": {
-		"node": "18.x"
+		"node": "20.x"
 	},
 	"repository": {
 		"type": "git",
