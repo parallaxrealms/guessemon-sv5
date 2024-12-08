@@ -10,7 +10,7 @@
 	let imageUrl = $state<string | undefined>(undefined);
 	let pokemonType = $state<string | undefined>(undefined);
 	let filteredOutNames = $state<{ name: string; generation: number }[]>([]);
-	let modeValue = $state<number>(data.modeValue || 0);
+	let modeValue = $state<number>(0);
 	let userGuesses = $state<string[]>(['', '', '']);
 	let attempts = $state<number>(0);
 	let hintGiven = $state<boolean>(false);
