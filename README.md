@@ -44,7 +44,3 @@ Guessemon is a fan-made project created purely for entertainment purposes. It is
 
 ### Contributions
 This project is 100% non-commercial. However, contributions in the form of feedback or code improvements are always welcome.
-
----
-
-Thank you for playing and testing! 🎮✨
